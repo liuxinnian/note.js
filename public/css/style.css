@@ -1,0 +1,47 @@
+/*!
+ * Style.css
+ */
+body {
+	background:#f7f7f7;
+}
+#header {
+	padding: 5px 0 5px; 
+	clear: both; 
+	position: relative;
+}
+
+.menu { 
+	margin-top: 20px;
+}
+
+.entry_list {
+	border-bottom: 1px dotted #B2B3B3;
+	padding: 0 0 1em;
+}
+.entry_item .entry-title {
+	line-height: 30px;
+	border-bottom: 1px dotted #B2B3B3;
+}
+.entry-content{
+	line-height: 1.8em;
+	padding: 10px 0; 
+	font-size:16px;
+	text-indent: 2em;
+}
+footer{
+	overflow: visible;
+	background: #2a2a2a;
+	clear: both;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	display: block;
+	z-index: 5;
+	text-align: center;
+}
+
+footer p{
+	text-indent: 10px;
+	color: #fff;
+	font-size: 12px;
+}
