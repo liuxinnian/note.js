@@ -1,12 +1,23 @@
 
-var mongoose		= require("mongoose");
+var settings = require('../settings');
 
-var Schema			= mongoose.Schema;
-var ObjectId		= Schema.ObjectId;
+var mongoose = require('mongoose'),
+	dsn = 'mongodb://' + settings.db.host +  '/' + settings.db.name,
+	db = mongoose.createConnection(dsn);
 
-var categories 		= new Schema({
-	name: String,
-	parentid : ObjectId
+var categoriesSchema = new mongoose.Schema({
+    name: String
 });
 
-exports.categories = categories;
+var categoriesModel = db.model('categories', categoriesSchema);
+
+
+exports.add = function(category_name,callback) {
+
+	var category = new categoriesModel({ name: category_name });
+
+	category.save(function (err, category) {
+		(err) ? callback(err) : callback(err,category);
+	 }); 
+
+};

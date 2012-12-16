@@ -10,18 +10,11 @@ var express = require('express')
 
 var app = express();
 
-// Configure for mongodb
-var db_host   = "localhost";
-var db_name   = "itnote";
-var mongoose  = require("mongoose");
-var Schema    = mongoose.Schema;
-var db        = mongoose.connect("mongodb://" + db_host + "/" + db_name);
-
-mongoose.model("categories", require("./models/categories").categories);
+var settings = require('./settings');
 
 // Configure for everything
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || settings.http.port);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.set('layout', 'layout'); // defaults to 'layout'   
