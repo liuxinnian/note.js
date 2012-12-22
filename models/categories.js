@@ -2,7 +2,7 @@
 var settings = require('../settings');
 
 var mongoose = require('mongoose'),
-	dsn = 'mongodb://' + settings.db.host +  '/' + settings.db.name,
+	dsn = 'mongodb://' +  settings.db.user + ':' + settings.db.pass + '@' + settings.db.host + ':' +settings.db.port +  '/' + settings.db.name,
 	db = mongoose.createConnection(dsn);
 
 var categoriesSchema = new mongoose.Schema({

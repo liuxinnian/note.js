@@ -14,10 +14,10 @@ var settings = require('./settings');
 
 // Configure for everything
 app.configure(function(){
-  app.set('port', process.env.PORT || settings.http.port);
+  app.set('port', process.env.PORT || settings.http.port); // process.env.PORT for modulus.io
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  app.set('layout', 'layout'); // defaults to 'layout'   
+  app.set('layout', 'layout'); // defaults to 'views/layout.ejs'   
   app.use(layout);
   app.use(express.favicon());
   app.use(express.logger('dev'));
