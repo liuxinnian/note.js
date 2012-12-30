@@ -19,7 +19,6 @@ app.configure(function(){
   app.set('view engine', 'ejs');
   app.set('layout', 'layout'); // defaults to 'views/layout.ejs'   
   app.use(layout);
-  app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -28,6 +27,7 @@ app.configure(function(){
   app.use(app.router);
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.favicon(__dirname + '/public/img/favicon.ico', { maxAge: 2592000000 }));
 });
 
 // Configure for development

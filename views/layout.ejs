@@ -1,90 +1,101 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/css/bootstrap.css' />
-    <link rel='stylesheet' href='/css/style.css' />
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>itNote.org</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/2.0/font-awesome.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <!-- Le HTML5 shiv, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
     <![endif]-->
-</head>
-<body>
-    <header id="header" class="container">
-        <div class="row">
-        	<!-- header start -->
-			<div class="span3">
-				<h1 class="hide">IT工程师的工作笔记</h1>
-				<a id="logo" href="/" alt="IT工程师的工作笔记" title="IT工程师的工作笔记">
-					<img src="/img/logo.png">
-				</a>
-			</div>
-			<nav class="span9">
-				<ul class="nav nav-pills menu">
-					<li class="active"><a href="#">全部笔记</a></li>
-					<li><a href="#">开发手册</a></li>
-					<li><a href="#">资源网站</a></li>
-					<li><a href="#">开发工具</a></li>
-					<li><a href="#">工程师</a></li>
-					<li><a href="#">加入我们</a></li>
-				</ul>
-			</nav>
-			<!-- header end -->
-        </div>
-    </header>
-    <div id="content" class="container">
-         <div class="row">
-            <nav id="sidebar" class="span3">
-            	<!-- slider start -->
-				<div class="well" style="padding: 5px 5px;">
-					<ul class="nav nav-list">
-						<li class="active"><a href="/">全部笔记</a></li>
-						<li class="divider"></li>
-						<li class="nav-header">操作系统</li>
-						<li><a href="#">Linux</a></li>
-						<li><a href="#">Mac</a></li>
-						<li><a href="#">iOS</a></li>
-						<li><a href="#">Android</a></li>
-						<li class="nav-header">前端技术</li>
-						<li><a href="#">HTML5</a></li>
-						<li><a href="#">CSS3</a></li>
-						<li><a href="#">jQuery</a></li>
-						<li class="nav-header">后端技术</li>
-						<li><a href="#">PHP</a></li>
-						<li><a href="#">Node.js</a></li>
-						<li class="nav-header">数据库</li>
-						<li><a href="#">Mysql</a></li>
-						<li><a href="#">MongoDB</a></li>
-						<li class="nav-header">云计算</li>
-						<li><a href="#">新浪SAE</a></li>
-						<li><a href="#">阿里云</a></li>
-						<li class="nav-header">开放平台</li>
-						<li><a href="#">淘宝</a></li>
-						<li><a href="#">新浪</a></li>
-						<li><a href="#">腾讯</a></li>
-						<li class="divider"></li>
-						<li><a href="#">开发手册</a></li>
-						<li class="divider"></li>
-						<li><a href="#">资源网站</a></li>
-						<li class="divider"></li>
-						<li><a href="#">开发工具</a></li>
-					</ul>
-				</div>
-				<!-- slider end -->
-            </nav>
-            <div id="main" class="span9">
-                <%- body %>
-            </div>
-        </div>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/webfont/1.1.0/webfont.js"></script>
+	<script type="text/javascript">
+	  WebFont.load({
+	    google: {
+	      families: ['Oswald:400,300,700']
+	    }
+	  });
+	</script>
+  </head>
+  
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <img class="image  pull-left" src="/img/logo.png"> <a class="brand" href="#">itNote.org</a> 
+        <ul class="nav pull-right">
+          <li class="active"><a href="#" class="a-1">笔记<br></a></li>
+          <li><a href="#" class="a-1">手册<br></a></li>
+          <li><a href="#" class="a-1">资源<br></a></li>
+          <li><a href="#" class="a-1">工具<br></a></li>
+          <li><a href="#" class="a-1">关于<br></a></li>
+        </ul>
+      </div>
     </div>
-    <footer id="footer">
-		<p>© ITNote Development Team 2012-2013 - <a href="http://itnote.org">ITNote.org</a></p>
-		<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh"><img alt="知识共享许可协议" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a>
-		本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 3.0 未本地化版本许可协议</a>进行许可。 </p>
-		<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="/js/bootstrap.js"></script>
-    </footer>
-</body>
+    <div class="container main">
+      <div class="row-fluid">
+        <nav class="span3">
+          <div class="well">
+            <ul class="nav nav-list">
+              <li class="active nav-header"><a href="/">全部笔记</a></li>
+              <li class="nav-header">操作系统</li>
+              <li><a href="#">Linux</a></li>
+              <li><a href="#">Mac</a></li>
+              <li><a href="#">iOS</a></li>
+              <li><a href="#">Android</a></li>
+              <li class="nav-header">前端技术</li>
+              <li><a href="#">HTML5</a></li>
+              <li><a href="#">CSS3</a></li>
+              <li><a href="#">jQuery</a></li>
+              <li class="nav-header">后端技术</li>
+              <li><a href="#">PHP</a></li>
+              <li><a href="#">Node.js</a></li>
+              <li class="nav-header">数据库</li>
+              <li><a href="#">Mysql</a></li>
+              <li><a href="#">MongoDB</a></li>
+              <li class="nav-header">云计算</li>
+              <li><a href="#">新浪SAE</a></li>
+              <li><a href="#">阿里云</a></li>
+              <li class="nav-header">开放平台</li>
+              <li><a href="#">淘宝</a></li>
+              <li><a href="#">新浪</a></li>
+              <li><a href="#">腾讯</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <aside class="span9">
+          <%- body %>
+        </aside>
+      </div>
+      <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        Powered by note.js Read more : <a href="http://github.com/seanbox/note.js" target="_blank">http://github.com/seanbox/note.js</a>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row-fluid">
+          <span class="span12">
+            <div class="pull-left">
+              <p>© itNote.org</p>
+            </div>
+            <ul class="nav nav-pills pull-right">
+              <li><a href="#" class="a-2">About</a>
+              </li>
+              <li><a href="#" class="a-2">Privacy</a>
+              </li>
+              <li><a href="#" class="a-2">Terms Of Service</a>
+              </li>
+            </ul>
+          </span>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min.js"></script>
+  </body>
 </html>

@@ -1,47 +1,109 @@
-/*!
- * Style.css
- */
-body {
-	background:#f7f7f7;
+/* Rest 重置样式 */
+html {
+  background-color: #ffffff;
 }
-#header {
-	padding: 5px 0 5px; 
-	clear: both; 
-	position: relative;
+body{
+  padding-top: 60px;
 }
 
-.menu { 
-	margin-top: 20px;
+/* Top Navbar 顶部导航 */
+.navbar {
+  height: 60px;
+}
+.navbar .navbar-inner {
+  background: rgba(255, 255, 255, 0.960784);
+  border: none;
+  height: 60px;
+}
+.navbar .navbar-inner .brand {
+  margin: 0px 0px 0px -15px;
+  text-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  font-family:"oswald";
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  line-height: 40px;
+}
+.navbar .navbar-inner .image {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin: 16px 0px 0px;
+  width: 30px;
+  height: 30px;
+}
+.navbar .navbar-inner .nav li a.a-1 {
+  line-height: 40px;
+}
+.navbar .navbar-inner .nav .active a {
+  line-height: 40px;
 }
 
-.entry_list {
-	border-bottom: 1px dotted #B2B3B3;
-	padding: 0 0 1em;
-}
-.entry_item .entry-title {
-	line-height: 30px;
-	border-bottom: 1px dotted #B2B3B3;
-}
-.entry-content{
-	line-height: 1.8em;
-	padding: 10px 0; 
-	font-size:16px;
-	text-indent: 2em;
-}
-footer{
-	overflow: visible;
-	background: #2a2a2a;
-	clear: both;
-	bottom: 0px;
-	left: 0px;
-	width: 100%;
-	display: block;
-	z-index: 5;
-	text-align: center;
+/* Main Container 主内容区域 */
+.container.main {
+  margin-bottom: 60px;
+  margin-top: 30px;
 }
 
-footer p{
-	text-indent: 10px;
-	color: #fff;
-	font-size: 12px;
+/* Slider Bar 侧边栏 */
+.container .row-fluid .span3 p {
+  font-weight: 300;
 }
+.container .row-fluid .span3 .well {
+   background: rgba(0, 0, 0, 0);
+ }
+.container .row-fluid .span3 .well .nav {
+   padding: 0px;
+ }
+.container .row-fluid .span3 .well .nav .active a {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #e5e5e5;
+}
+
+/* Content 内容区域 */
+.container .row-fluid .span9 article .page-header h1.h1 {
+  font-weight: normal;
+  font-size: 24px;
+  color: #555555;
+  line-height: 30px;
+}
+.container .row-fluid .span9 article .page-header.entry-title {
+  padding: 0px;
+  margin: 0px 0px 10px 0px;
+}
+.container .row-fluid .span9 article p.entry-content {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 25px;
+}
+.container .row-fluid .span9 article.entry {
+  margin-right: 20px;
+  margin-bottom: 50px;
+}
+
+
+/* Footer 底部区域 */
+.container-fluid {
+  background: #333333;
+  padding: 30px 20px 30px 20px;
+}
+.container-fluid .container .row-fluid .span12 .nav {
+  margin: 0px;
+}
+.container-fluid .container .row-fluid .span12 .pull-left p {
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 36px;
+}
+.container-fluid .container .row-fluid .span12 .nav li a.a-2 {
+  text-align: center;
+  color: #cccccc;
+}
+
+
