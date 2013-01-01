@@ -1,0 +1,21 @@
+{ "_id" : { "$oid" : "50e27576a9cb2da8c3f732c5" }, "categoryName" : "操作系统", "child" : [ { "_id" : { "$oid" : "50e276f14597a05910000001" }, "categoryName" : "Linux" }, { "_id" : { "$oid" : "50e27704256fd35b10000001" }, "categoryName" : "Mac" }, { "_id" : { "$oid" : "50e277113be1c15c10000001" }, "categoryName" : "iOS" }, { "_id" : { "$oid" : "50e2771ab264c95d10000001" }, "categoryName" : "Android" } ] }
+{ "_id" : { "$oid" : "50e2768ea9cb2da8c3f732c6" }, "categoryName" : "前端技术", "child" : [ { "_id" : { "$oid" : "50e27750d4d8156410000001" }, "categoryName" : "HTML5" }, { "_id" : { "$oid" : "50e2775b8e1e6c6610000001" }, "categoryName" : "CSS3" }, { "_id" : { "$oid" : "50e27770f9d0ea6710000001" }, "categoryName" : "jQuery" } ] }
+{ "_id" : { "$oid" : "50e2768ea9cb2da8c3f732c7" }, "categoryName" : "后端技术", "child" : [ { "_id" : { "$oid" : "50e277b18c8d7c6a10000001" }, "categoryName" : "PHP" }, { "_id" : { "$oid" : "50e277bb5d60176c10000001" }, "categoryName" : "Node.js" } ] }
+{ "_id" : { "$oid" : "50e2768ea9cb2da8c3f732c8" }, "categoryName" : "数据库", "child" : [ { "_id" : { "$oid" : "50e277dc631ef96d10000001" }, "categoryName" : "Mysql" }, { "_id" : { "$oid" : "50e277ea39c4686e10000001" }, "categoryName" : "MongoDB" } ] }
+{ "_id" : { "$oid" : "50e2768ea9cb2da8c3f732c9" }, "categoryName" : "云计算", "child" : [ { "_id" : { "$oid" : "50e27817e13a6a7410000001" }, "categoryName" : "新浪SAE" }, { "_id" : { "$oid" : "50e278234cfa257510000001" }, "categoryName" : "阿里云" } ] }
+{ "_id" : { "$oid" : "50e2768fa9cb2da8c3f732ca" }, "categoryName" : "开放平台", "child" : [ { "_id" : { "$oid" : "50e27839b68efb7610000001" }, "categoryName" : "淘宝" }, { "_id" : { "$oid" : "50e27848ea0b707710000001" }, "categoryName" : "新浪" }, { "_id" : { "$oid" : "50e27850949f897810000001" }, "categoryName" : "腾讯" } ] }
+{ "categoryName" : "Linux", "parentId" : { "$oid" : "50e27576a9cb2da8c3f732c5" }, "_id" : { "$oid" : "50e276f14597a05910000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "Mac", "parentId" : { "$oid" : "50e27576a9cb2da8c3f732c5" }, "_id" : { "$oid" : "50e27704256fd35b10000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "iOS", "parentId" : { "$oid" : "50e27576a9cb2da8c3f732c5" }, "_id" : { "$oid" : "50e277113be1c15c10000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "HTML5", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c6" }, "_id" : { "$oid" : "50e27750d4d8156410000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "CSS3", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c6" }, "_id" : { "$oid" : "50e2775b8e1e6c6610000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "jQuery", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c6" }, "_id" : { "$oid" : "50e27770f9d0ea6710000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "PHP", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c7" }, "_id" : { "$oid" : "50e277b18c8d7c6a10000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "Node.js", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c7" }, "_id" : { "$oid" : "50e277bb5d60176c10000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "Mysql", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c8" }, "_id" : { "$oid" : "50e277dc631ef96d10000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "MongoDB", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c8" }, "_id" : { "$oid" : "50e277ea39c4686e10000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "新浪SAE", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c9" }, "_id" : { "$oid" : "50e27817e13a6a7410000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "阿里云", "parentId" : { "$oid" : "50e2768ea9cb2da8c3f732c9" }, "_id" : { "$oid" : "50e278234cfa257510000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "淘宝", "parentId" : { "$oid" : "50e2768fa9cb2da8c3f732ca" }, "_id" : { "$oid" : "50e27839b68efb7610000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "新浪", "parentId" : { "$oid" : "50e2768fa9cb2da8c3f732ca" }, "_id" : { "$oid" : "50e27848ea0b707710000001" }, "child" : [], "__v" : 0 }
+{ "categoryName" : "腾讯", "parentId" : { "$oid" : "50e2768fa9cb2da8c3f732ca" }, "_id" : { "$oid" : "50e27850949f897810000001" }, "child" : [], "__v" : 0 }

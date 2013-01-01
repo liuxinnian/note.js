@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "note.js",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,6 +10,7 @@
     "ejs": "*",
     "stylus": "*",
     "express-ejs-layouts": "*",
-    "mongoose": "*"     
+    "mongoose": "*",
+    "async": "*"
   }
 }
