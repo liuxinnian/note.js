@@ -18,8 +18,8 @@
           </div>
         </nav>
         <aside class="span9">
-          <% if(typeof(categories) !== "undefined") { %>
-          <% notes.forEach(function(note){ %>
+          <% if(typeof(notes.results) !== "undefined") { %>
+          <% notes.results.forEach(function(note){ %>
           <article class="entry">
               <header class="page-header entry-title">
                 <h1 class="h1"><a href="/note/show/<%= note._id %>"><%= note.title %></a><br></h1>
@@ -32,7 +32,7 @@
           </article>
            <% }) %>
           <% } %>
-
+      <% if( parseInt(notes.pageNav.totalPage) > 1 ) {%>
       <div class="pagination pagination-right">
         <ul>
           <li class="disabled"><a href="#">«</a></li>
@@ -44,6 +44,8 @@
           <li><a href="#">»</a></li>
         </ul>
       </div>
+      <% } %>
+
       <% if(typeof(common.params.cat) !== "undefined") { %>
       <form>
         <fieldset>

@@ -11,37 +11,47 @@ exports.index = function(req, res){
 		notes = require('../models/notes'),
 		template = 'note/index',
 		async = require('async');
-	
+
+	var row = 10;
+	var page = ( typeof(req.params.page) === "undefined") ? 1 : parseInt(req.params.page);
+	var conditions = { "hidden": false};
+
+	if( typeof(req.params.cat) !== "undefined"){
+		conditions["category._id"] = req.params.cat;
+	}
+
 	async.series({
 	    categories: function(callback){
-			var conditions = { 'parentId': null };
-			categories.findCategory( conditions, function(err,result){
-				callback(null, result);
+			categories.findCategory( { 'parentId': null }, function(err,results){
+				callback(null, results);
 			});
 	    },
 	    notes: function(callback){
-	    	var	page = 1,
-				row = 10;
-			var conditions = { hidden: false};
-
-			if( typeof(req.params.cat) !== "undefined"){
-				conditions["category._id"] = req.params.cat;
-			}
-			notes.findNote( conditions,page,row,function(err,result){
-				callback(null, result);
+			notes.countNote(conditions, function (err, count) {
+				var totalPages = Math.ceil( count / row );
+				//fix page paramater: 0 > page < totalPages
+				var fixedPage = page;
+				if(page < 1){
+					fixedPage = 1;
+				}else if(page > totalPages){
+					fixedPage = totalPages;
+				}
+				var pageNav = { "currentPage" : fixedPage, "totalPages": totalPages };
+				notes.listNote( conditions,fixedPage,row,function(err,results){
+					callback(null, { "results": results, "pageNav": pageNav});
+				});
 			});
 	    },
 	    common: function(callback){
-	    	var common = {params:req.params};
+	    	var common = { "title": "Home", "params":req.params};
 	        callback(null, common);
 	    },
 	},
 	//finally,render the template
+	//results: {categories,notes,common}
 	function(err, results){
-		results.common.title = 'Home'; //overwrite the page title
 		res.render(template, results);
 	});
-	
 };
 
 
@@ -56,13 +66,13 @@ exports.show = function(req, res){
 	async.series({
 	    note: function(callback){
 			var noteId = req.params.id
-			var conditions = { _id: noteId, hidden: false};
-			notes.findOneNote( conditions,function(err,result){
-				callback(null, result);
+			var conditions = { "_id": noteId, "hidden": false};
+			notes.findOneNote( conditions,function(err,results){
+				callback(null, results);
 			});
 	    },
 	    common: function(callback){
-	    	var common = {params:req.params};
+	    	var common = { "params":req.params };
 	        callback(null, common);
 	    },
 	},

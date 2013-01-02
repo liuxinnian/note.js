@@ -30,11 +30,27 @@ var notesModel = mongoose.model('notes', notesSchema);
  * @param  {Function} callback
  * @return {object}
  */
-exports.findNote = function(conditions,page,row,callback){
+exports.listNote = function(conditions,page,row,callback){
 
 	var skip = (page -1) * row;
 
 	notesModel.find(conditions).skip(skip).limit(row).lean().exec(function (err, result) {
+		if(err) return callback(err);
+		callback(null,result);
+	});
+	return this;
+};
+
+/**
+ * find notes
+ * 查找笔记
+ * @param  {object}   conditions 
+ * @param  {Function} callback
+ * @return {object}
+ */
+exports.countNote = function(conditions,callback){
+	
+	notesModel.count(conditions).exec(function (err, result) {
 		if(err) return callback(err);
 		callback(null,result);
 	});

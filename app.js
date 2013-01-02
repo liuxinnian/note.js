@@ -40,9 +40,15 @@ app.configure(function(){
 // URL Routes
 // URL 路由
 var note = require('./routes/note');
-app.get('/', note.index);
-app.get('/note/cat/:cat', note.index);
+
+app.get('/', note.index); //default controll, no category,no page
+app.get('/note/page/:page', note.index); //no category but page
+
+app.get('/note/cat/:cat', note.index); //category
+app.get('/note/cat/:cat/page/:page', note.index); //category and page
+
 app.get('/note/show/:id', note.show);
+
 
 // custom 404 page
 // 自定义404页面
@@ -50,12 +56,12 @@ app.use(function(req, res, next){
   res.status(404);
   // respond with html page
   if (req.accepts('html')) {
-    res.render('other/404', { title:'Page Not found',url: req.url });
+    res.render('other/404', { common : {"title": "Page Not found", "url": req.url } } );
     return;
   }
   // respond with json
   if (req.accepts('json')) {
-    res.send({ error: 'Not found' });
+    res.send({ "error": "Not found" });
     return;
   }
   // default to plain-text. send()
