@@ -40,8 +40,9 @@ app.configure(function(){
 // URL Routes
 // URL 路由
 var note = require('./routes/note');
-app.get('(/|/note|/note/:cat)', note.index);
-app.get('/note/:cat/:id', note.show);
+app.get('/', note.index);
+app.get('/note/cat/:cat', note.index);
+app.get('/note/show/:id', note.show);
 
 // custom 404 page
 // 自定义404页面

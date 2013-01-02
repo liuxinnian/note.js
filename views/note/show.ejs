@@ -20,18 +20,12 @@
         <aside class="span9">
   		    <article class="entry">
               <header class="page-header entry-title">
-                <h1 class="h1"><a href="/note/<%= cat %>/<%= id %>">The latest note</a><br></h1>
+                <h1 class="h1"><%= note.title %><br></h1>
               </header>
               <small>
                 <span>By: Seanliu</span>
-                <time class="entry-date" datetime="2012-08-16T00:25:51+00:00" pubdate="pubdate" title="2012 年 8 月 16 日">Created: 2012-08-16</time>
+                <time class="entry-date" datetime="<%= note.date %>" pubdate="pubdate" title="<%= note.date %>">Created: <%= note.date %></time>
               </small>
-              <p class="entry-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis quamat justo condimentum condimentum. Fusce arcu felis, fringilla nec varius a, rhoncus
-                a libero. Donec ut ligula vitae leo pellentesque varius.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis quamat justo condimentum condimentum. Fusce arcu felis, fringilla nec varius a, rhoncus
-                a libero. Donec ut ligula vitae leo pellentesque varius.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis quamat justo condimentum condimentum. Fusce arcu felis, fringilla nec varius a, rhoncus
-                a libero. Donec ut ligula vitae leo pellentesque varius.
-          	</p>
+              <p class="entry-content"><%- note.body %></p>
           </article>
         </aside>

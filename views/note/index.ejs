@@ -1,13 +1,15 @@
         <nav class="span3">
           <div class="well">
-            <% if(typeof(categories) != 'undefined') { %>
+            <% if(typeof(categories) !== "undefined") { %>
             <ul class="nav nav-list">
-              <li class="active nav-header"><a href="/">全部笔记</a></li>
+              <li class="<% if(typeof(common.params.cat) === "undefined") { %>active <%}%>nav-header"><a href="/">全部笔记</a></li>
               <% categories.forEach(function(category){ %>
               <li class="nav-header"><%= category.categoryName  %></li>
-                <% if(typeof(category.child) != 'undefined') { %>
+                <% if(typeof(category.child) != "undefined") { %>
                 <% category.child.forEach(function(child){ %>
-                <li><a href="/note/<%= child._id%>"><%= child.categoryName  %></a></li>
+                <li<% if(typeof(common.params.cat) !== "undefined" && common.params.cat == child._id ) { %> class="active"<%}%>>
+                  <a href="/note/cat/<%= child._id%>"><%= child.categoryName  %></a>
+                </li>
                 <% }) %>
                 <% } %>
               <% }) %>
@@ -16,31 +18,20 @@
           </div>
         </nav>
         <aside class="span9">
-      <article class="entry">
-              <header class="page-header entry-title">
-                <h1 class="h1"><a href="/note/1/2">This is the second note</a><br></h1>
-              </header>
-              <small>
-                <span>By: Seanliu</span>
-                <time class="entry-date" datetime="2012-08-16T00:25:51+00:00" pubdate="pubdate" title="2012 年 8 月 16 日">Created: 2012-08-16</time>
-              </small>
-              <p class="entry-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis quam
-                at justo condimentum condimentum. Fusce arcu felis, fringilla nec varius a, rhoncus
-                a libero. Donec ut ligula vitae leo pellentesque varius. <a href="/note/1/2">[Read More]</a></p>
-          </article>
-
+          <% if(typeof(categories) !== "undefined") { %>
+          <% notes.forEach(function(note){ %>
           <article class="entry">
               <header class="page-header entry-title">
-                <h1 class="h1"><a href="/note/1/1">This is the first note</a><br></h1>
+                <h1 class="h1"><a href="/note/show/<%= note._id %>"><%= note.title %></a><br></h1>
               </header>
               <small>
                 <span>By: Seanliu</span>
-                <time class="entry-date" datetime="2012-08-16T00:25:51+00:00" pubdate="pubdate" title="2012 年 8 月 16 日">Created: 2012-08-16</time>
+                <time class="entry-date" datetime="<%= note.date %>" pubdate="pubdate" title="<%= note.date %>">Created: <%= note.date %></time>
               </small>
-              <p class="entry-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis quam
-                at justo condimentum condimentum. Fusce arcu felis, fringilla nec varius a, rhoncus
-                a libero. Donec ut ligula vitae leo pellentesque varius.<a href="/note/1/1">[Read More]</a></p>
+              <p class="entry-content"><%- note.body %> <a href="/note/show/<%= note._id %>">[Read More]</a></p>
           </article>
+           <% }) %>
+          <% } %>
 
       <div class="pagination pagination-right">
         <ul>
@@ -53,6 +44,7 @@
           <li><a href="#">»</a></li>
         </ul>
       </div>
+      <% if(typeof(common.params.cat) !== "undefined") { %>
       <form>
         <fieldset>
           <legend>在当前分类中发表内容</legend>
@@ -65,6 +57,7 @@
           <button type="submit" class="btn">提交</button>
         </fieldset>
       </form>
+      <% } %>
       </aside>
 
 
