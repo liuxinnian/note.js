@@ -13,7 +13,7 @@ var express = require('express')
 
 var app = express();
 
-// Connect to Mongodb when the app initializes
+// Connect to mongodb when the app initializes
 // 为整个应用链接数据库
 var mongoose = require('mongoose'),
     db = mongoose.connect(settings.dsn);
@@ -39,13 +39,14 @@ app.configure(function(){
 
 // URL Routes
 // URL 路由
-var note = require('./routes/note');
+var note = require('./controller/note');
 
 app.get('/', note.index); //default controll, no category,no page
+app.get('/note', note.index); //default controll, no category,no page
 app.get('/note/page/:page', note.index); //no category but page
 
-app.get('/note/cat/:cat', note.index); //category
-app.get('/note/cat/:cat/page/:page', note.index); //category and page
+app.all('/note/cat/:cat', note.index); //category
+app.all('/note/cat/:cat/page/:page', note.index); //category and page
 
 app.get('/note/show/:id', note.show);
 
@@ -56,7 +57,7 @@ app.use(function(req, res, next){
   res.status(404);
   // respond with html page
   if (req.accepts('html')) {
-    res.render('other/404', { common : {"title": "Page Not found", "url": req.url } } );
+    res.render('other/404', { common : {"title": "Page Not found", "req": { "url": req.url }  } } );
     return;
   }
   // respond with json
@@ -69,15 +70,12 @@ app.use(function(req, res, next){
 });
 
 
-// Start Server. but in method,the server will die on unhandled exception
-// 启动服务,不过这种方式启动，在遇到异常时服务会挂掉
+// Start Server
 // http.createServer(app).listen(app.get('port'), function(){
 //   console.log("Express server listening on port " + app.get('port'));
 // });
 
-// Start Server,but in this method, the server won't die on unhandled exception
-// 启动服务,以这种方式启动服务，会捕获未知异并通知，服务不会挂掉(官方建议)
-// more about: http://nodejs.org/api/domain.html
+// Start Server more about: http://nodejs.org/api/domain.html
 var serverDomain = domain.create();
 
 serverDomain.run(function() {

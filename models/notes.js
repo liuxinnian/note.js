@@ -8,16 +8,14 @@ var mongoose = require('mongoose'),
 
 var notesSchema = new Schema({
 	title: 	String,
+	header: String,
 	body:   String,
 	date: 	{ type: Date, default: Date.now },	
 	hidden: { type: Boolean, default: false },
+	categoryId: ObjectId,
 	author: {
 		_id: ObjectId, 
 		authorName: String 
-	},
-	category: {
-		_id: ObjectId,
-		categoryName: String
 	}
 });
 
@@ -82,9 +80,11 @@ exports.findOneNote = function(conditions,callback){
  * @return {object} 
  */
 exports.addNote = function(note,callback) {
+	var string = require('string');
 	var item = new notesModel(note);
-	item.category = note.category; //is this so? no idea about: http://mongoosejs.com/docs/subdocs.html
-	item.author = note.author; //is this so?
+	item.title = string(item.title).stripTags();
+	item.header = string(item.body).stripTags().left(300).toString();
+	item.author = note.author; //is this so? no idea about: http://mongoosejs.com/docs/subdocs.html
 	item.save(function (err, result) {
 		if(err) return callback(err);
 		callback(null,result);

@@ -10,14 +10,27 @@ exports.index = function(req, res){
 	var categories = require('../models/categories'),
 		notes = require('../models/notes'),
 		template = 'note/index',
-		async = require('async');
+		async = require('async'),
+		string = require('string');
+
+	if( !string(req.param('noteTitle')).isEmpty() && !string(req.param('noteCategory')).isEmpty() && !string(req.param('noteBody')).isEmpty()   ){
+		var noteTitle = req.param('noteTitle'),
+			noteCategory = req.param('noteCategory'),
+			noteBody = req.param('noteBody');
+		var item = { "title": noteTitle, "body": noteBody, "categoryId": noteCategory };
+
+		notes.addNote( item , function(err){
+			if(err) console.log(err);
+		});
+	}
+
 
 	var row = 10;
 	var page = ( typeof(req.params.page) === "undefined") ? 1 : parseInt(req.params.page);
 	var conditions = { "hidden": false};
 
 	if( typeof(req.params.cat) !== "undefined"){
-		conditions["category._id"] = req.params.cat;
+		conditions.categoryId = req.params.cat;
 	}
 
 	async.series({
@@ -38,12 +51,13 @@ exports.index = function(req, res){
 				}
 				var pageNav = { "currentPage" : fixedPage, "totalPages": totalPages };
 				notes.listNote( conditions,fixedPage,row,function(err,results){
+					console.log(results);
 					callback(null, { "results": results, "pageNav": pageNav});
 				});
 			});
 	    },
 	    common: function(callback){
-	    	var common = { "title": "Home", "params":req.params};
+	    	var common = { "title": "Home", "req": { "params":req.params, "path": req.path }  };
 	        callback(null, common);
 	    },
 	},
@@ -72,7 +86,7 @@ exports.show = function(req, res){
 			});
 	    },
 	    common: function(callback){
-	    	var common = { "params":req.params };
+	    	var common = { "req": { "params":req.params, "path": req.path } };
 	        callback(null, common);
 	    },
 	},

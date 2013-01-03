@@ -79,7 +79,8 @@ body{
 .container .row-fluid .span9 article p.entry-content {
   font-weight: 300;
   font-size: 16px;
-  line-height: 25px;
+  line-height: 1.8em;
+  text-indent:2em;
 }
 .container .row-fluid .span9 article.entry {
   margin-right: 20px;

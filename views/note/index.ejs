@@ -2,12 +2,12 @@
           <div class="well">
             <% if(typeof(categories) !== "undefined") { %>
             <ul class="nav nav-list">
-              <li class="<% if(typeof(common.params.cat) === "undefined") { %>active <%}%>nav-header"><a href="/">全部笔记</a></li>
+              <li class="<% if(typeof(common.req.params.cat) === "undefined") { %>active <%}%>nav-header"><a href="/">全部笔记</a></li>
               <% categories.forEach(function(category){ %>
               <li class="nav-header"><%= category.categoryName  %></li>
                 <% if(typeof(category.child) != "undefined") { %>
                 <% category.child.forEach(function(child){ %>
-                <li<% if(typeof(common.params.cat) !== "undefined" && common.params.cat == child._id ) { %> class="active"<%}%>>
+                <li<% if(typeof(common.req.params.cat) !== "undefined" && common.req.params.cat == child._id ) { %> class="active"<%}%>>
                   <a href="/note/cat/<%= child._id%>"><%= child.categoryName  %></a>
                 </li>
                 <% }) %>
@@ -28,7 +28,7 @@
                 <span>By: Seanliu</span>
                 <time class="entry-date" datetime="<%= note.date %>" pubdate="pubdate" title="<%= note.date %>">Created: <%= note.date %></time>
               </small>
-              <p class="entry-content"><%- note.body %> <a href="/note/show/<%= note._id %>">[Read More]</a></p>
+              <p class="entry-content"><%= note.header %></p><a href="/note/show/<%= note._id %>">[Read More]</a>
           </article>
            <% }) %>
           <% } %>
@@ -46,19 +46,23 @@
       </div>
       <% } %>
 
-      <% if(typeof(common.params.cat) !== "undefined") { %>
-      <form>
+      <% if(typeof(common.req.params.cat) !== "undefined") { %>
+      <form id="addNote" name="addNote" method="post" action="<%= common.req.path %>">
         <fieldset>
           <legend>在当前分类中发表内容</legend>
           <label>标题：
-            <input type="text" id="inputTitle" class="input-block-level" placeholder="">
+            <input type="text" id="noteTitle" name="noteTitle" class="input-block-level" placeholder="标题">
+            <input type="hidden" id="noteCategory" name="noteCategory" value="<%= common.req.params.cat %>">
         </label>
           <label>内容：
-            <textarea id="inputContent" class="input-block-level" rows="8" placeholder=""></textarea>
+            <textarea id="noteBody" name="noteBody" class="input-block-level" rows="8" placeholder=""></textarea>
           </label>
           <button type="submit" class="btn">提交</button>
         </fieldset>
       </form>
+      <script type="text/javascript">
+        $('#noteBody').wysihtml5();
+      </script>
       <% } %>
       </aside>
 
